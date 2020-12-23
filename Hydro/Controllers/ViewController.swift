@@ -18,13 +18,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     let minSpeed:CGFloat = 1000
     let maxSpeed:CGFloat = 6000
     var touchesArray = [0,0,0]
+    @IBOutlet weak var label: UILabel!
+    var arrayOfVentil = ["kohutik1", "kohutik2", "FirstPumpCube", "SecondPumpCube", "ThirdPumpCube"]
     
 
-    @IBOutlet weak var label: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         self.configuration.planeDetection = .horizontal
         configuration.environmentTexturing = .automatic
         self.sceneView.session.run(configuration)
@@ -32,9 +31,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.sceneView.delegate = self
         let tapGestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         self.sceneView.addGestureRecognizer(tapGestureRecogniser)
+
         // Do any additional setup after loading the view.
     }
-
+    
     @objc func handleTap(sender: UITapGestureRecognizer){
         if(!hydroAdded){
             guard let sceneView = sender.view as? ARSCNView else{return}
@@ -51,13 +51,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 print("didnt touch anything")
             }else{
                 guard let node = hitTestResult.first?.node else{return}
-                let nodeName = node.geometry?.name
-                print()
-                if(nodeName == "kohutik1" || nodeName == "kohutik2"){
-                    frontValveHit(node: node)
-                }
-                else if(nodeName == "FirstBarelInside" || nodeName == "SecondBarelInside" || nodeName == "ThirdBarelInside" ){
-                    barelHit(node: node)
+                if let nodeName = node.geometry?.name{
+                    if(arrayOfVentil.contains(nodeName)){
+                        frontValveHit(node: node)
+                    }
+                    else if(nodeName == "FirstBarelInside" || nodeName == "SecondBarelInside" || nodeName == "ThirdBarelInside" ){
+                        barelHit(node: node)
+    //                    var tempGeometry = SCNTube(innerRadius: 1, outerRadius: 0.5, height: 1)
+    //                    tempGeometry.firstMaterial?.diffuse.contents = UIColor.red
+    //                    var tempNode = SCNNode(geometry: tempGeometry)
+    //                    tempNode.position = SCNVector3Make(0, 0, 0)
+    //                    node.addChildNode(tempNode)
+                    }
                 }
             }
         }
@@ -65,11 +70,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func frontValveHit(node: SCNNode){
         if(Int(round(node.rotation.y)) == 0){
-            let action = SCNAction.rotateBy(x: 0, y: CGFloat(35.degreesToRadians), z: 0, duration: 1)
+            let action = SCNAction.rotateBy(x: 0, y: CGFloat(-35.degreesToRadians), z: 0, duration: 1)
             node.runAction(action)
             node.geometry?.firstMaterial?.diffuse.contents = UIColor.green
         }else{
-            let action = SCNAction.rotateBy(x: 0, y: CGFloat(-35.degreesToRadians), z: 0, duration: 1)
+            let action = SCNAction.rotateBy(x: 0, y: CGFloat(35.degreesToRadians), z: 0, duration: 1)
             node.runAction(action)
             node.geometry?.firstMaterial?.diffuse.contents = UIColor.yellow
         }
@@ -108,7 +113,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         node.filters? = addBloom()!
     }
     
-    
     func addHydro(hitTestResult: ARHitTestResult){
         if hydroAdded == false{
             let hydroScene = SCNScene(named: "Hydro.scnassets/hydro5.scn")
@@ -137,6 +141,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         DispatchQueue.main.async {
             self.label.isHidden = false
         }
+
         DispatchQueue.main.asyncAfter(deadline: .now()+3, execute: {
             self.label.isHidden = true
         })
@@ -146,84 +151,70 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.performSegue(withIdentifier: "goToHelp", sender: self)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToHelp" {
-            let destinationVC = segue.destination as! HelpViewController
-        }
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             start = (touch.location(in: sceneView), touch.timestamp)
             print(touch.location(in: sceneView))
         }
-        let touch = touches.first!
-        if(touch.view == self.sceneView){
-            let viewTouchLocation:CGPoint = touch.location(in: sceneView)
-            guard let result = sceneView.hitTest(viewTouchLocation, options: nil).first else {
-                return
-            }
-            print("touch working")
-            let node = result.node
-            let nodeName = node.geometry?.name
-            
-        }
     }
     
-    
-    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first{
+            print(touch.location(in: sceneView))
+        }
+    }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        var swiped = false
-//        if let touch = touches.first, let startTime = self.start?.time,
-//                let startLocation = self.start?.location {
-//            let location = touch.location(in:sceneView)
-//            let dx = location.x - startLocation.x
-//            let dy = location.y - startLocation.y
-//            let distance = sqrt(dx*dx+dy*dy)
-//
-//            // Check if the user's finger moved a minimum distance
-//            if distance > minDistance {
-//
-//                let deltaTime = CGFloat(touch.timestamp - startTime)
-//                let speed = distance / deltaTime
-//
-//                // Check if the speed was consistent with a swipe
-//                if speed >= minSpeed && speed <= maxSpeed {
-//
-//                    // Determine the direction of the swipe
-//                    let x = abs(dx/distance) > 0.4 ? Int(sign(Float(dx))) : 0
-//                    let y = abs(dy/distance) > 0.4 ? Int(sign(Float(dy))) : 0
-//
-//                    swiped = true
-////                    switch (x,y) {
-////                    case (0,1):
-////                        print("swiped up")
-////                    case (0,-1):
-////                        print("swiped down")
-////                    case (-1,0):
-////                        print("swiped left")
-////                    case (1,0):
-////                        print("swiped right")
-////                    case (1,1):
-////                        print("swiped diag up-right")
-////                    case (-1,-1):
-////                        print("swiped diag down-left")
-////                    case (-1,1):
-////                        print("swiped diag up-left")
-////                    case (1,-1):
-////                        print("swiped diag down-right")
-////                    default:
-////                        swiped = false
-////                        break
-////                    }
-//                }
-//            }
-//        }
-//        start = nil
-//        if !swiped {
-//            // Process non-swipes (taps, etc.)
-//            print("not a swipe")
-//        }
+        var swiped = false
+        if let touch = touches.first, let startTime = self.start?.time,
+           let startLocation = self.start?.location {
+            let location = touch.location(in:sceneView)
+            let dx = location.x - startLocation.x
+            let dy = location.y - startLocation.y
+            let distance = sqrt(dx*dx+dy*dy)
+            
+            // Check if the user's finger moved a minimum distance
+            if distance > minDistance {
+                
+                let deltaTime = CGFloat(touch.timestamp - startTime)
+                let speed = distance / deltaTime
+                
+                // Check if the speed was consistent with a swipe
+                if speed >= minSpeed && speed <= maxSpeed {
+                    
+                    // Determine the direction of the swipe
+                    let x = abs(dx/distance) > 0.4 ? Int(sign(Float(dx))) : 0
+                    let y = abs(dy/distance) > 0.4 ? Int(sign(Float(dy))) : 0
+                    
+                    swiped = true
+                    switch (x,y) {
+                    case (0,1):
+                        print("swiped up")
+                    case (0,-1):
+                        print("swiped down")
+                    case (-1,0):
+                        print("swiped left")
+                    case (1,0):
+                        print("swiped right")
+                    case (1,1):
+                        print("swiped diag up-right")
+                    case (-1,-1):
+                        print("swiped diag down-left")
+                    case (-1,1):
+                        print("swiped diag up-left")
+                    case (1,-1):
+                        print("swiped diag down-right")
+                    default:
+                        swiped = false
+                        break
+                    }
+                }
+            }
+        }
+        start = nil
+        if !swiped {
+            // Process non-swipes (taps, etc.)
+            print("not a swipe")
+        }
         
         
     }
@@ -233,7 +224,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let bloomFilter = CIFilter(name:"CIBloom")!
         bloomFilter.setValue(10.0, forKey: "inputIntensity")
         bloomFilter.setValue(30.0, forKey: "inputRadius")
-
+        
         return [bloomFilter]
     }
     

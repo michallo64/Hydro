@@ -20,8 +20,14 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrB-h1-WRS">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </arscnView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Povrch Detekovaný" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKc-1o-C08">
+                                <rect key="frame" x="77" y="65" width="261" height="29.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <color key="highlightedColor" red="0.60545319320000002" green="0.11064083130000001" blue="0.121533744" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </label>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5k-o0-WXn">
-                                <rect key="frame" x="310" y="44" width="104" height="86"/>
+                                <rect key="frame" x="332" y="44" width="82" height="86"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Help" backgroundImage="button">
                                     <color key="titleColor" systemColor="labelColor"/>
@@ -30,38 +36,28 @@
                                     <action selector="helpButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="yty-Bj-qI8"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Povrch detekovaný" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dz2-aV-DB4">
-                                <rect key="frame" x="121" y="78" width="172" height="23.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Dz2-aV-DB4" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="34" id="5h8-uQ-cng"/>
-                            <constraint firstItem="Dz2-aV-DB4" firstAttribute="centerX" secondItem="U0K-SW-4ec" secondAttribute="centerX" id="5sW-dy-fw7"/>
                             <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="G5k-o0-WXn" secondAttribute="bottom" constant="732" id="7fx-fg-t4E"/>
                             <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="G5k-o0-WXn" secondAttribute="bottom" constant="732" id="DlJ-53-HlW"/>
                             <constraint firstItem="G5k-o0-WXn" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="GLs-0S-vcx"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="GsS-dJ-CKf"/>
-                            <constraint firstItem="G5k-o0-WXn" firstAttribute="leading" secondItem="Dz2-aV-DB4" secondAttribute="trailing" constant="8" symbolic="YES" id="LWA-JK-ekS"/>
-                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="Dz2-aV-DB4" secondAttribute="bottom" constant="760.5" id="S9X-nB-1sS"/>
                             <constraint firstItem="G5k-o0-WXn" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" id="SI9-qI-0b4"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="VpT-BR-CcM"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="XyZ-9z-H8e"/>
                             <constraint firstItem="G5k-o0-WXn" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" id="cB3-na-iad"/>
-                            <constraint firstItem="G5k-o0-WXn" firstAttribute="leading" secondItem="Dz2-aV-DB4" secondAttribute="trailing" constant="17" id="pKq-6g-Oal"/>
+                            <constraint firstItem="nKc-1o-C08" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="77" id="cTG-IR-U84"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="nKc-1o-C08" secondAttribute="trailing" constant="76" id="mel-xJ-FHc"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" id="rJc-2c-zQA"/>
-                            <constraint firstItem="G5k-o0-WXn" firstAttribute="leading" secondItem="Dz2-aV-DB4" secondAttribute="trailing" constant="17" id="tuc-Cs-A8M"/>
+                            <constraint firstItem="nKc-1o-C08" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="21" id="rVh-p4-nH1"/>
                             <constraint firstItem="G5k-o0-WXn" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="unQ-tP-HAW"/>
-                            <constraint firstItem="Dz2-aV-DB4" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="121" id="wYL-0a-wqz"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="helpButt" destination="G5k-o0-WXn" id="Zfz-tP-Xhd"/>
-                        <outlet property="label" destination="Dz2-aV-DB4" id="3Vc-P9-BOl"/>
+                        <outlet property="label" destination="nKc-1o-C08" id="ZQJ-dZ-spt"/>
                         <outlet property="sceneView" destination="BrB-h1-WRS" id="Ri4-cA-Nu6"/>
                         <segue destination="JgE-ho-7Uv" kind="presentation" id="HgZ-0r-biu"/>
                     </connections>

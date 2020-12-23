@@ -10,9 +10,12 @@
 		2B1ADC7D24AA0EE500F31EDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1ADC7C24AA0EE500F31EDD /* AppDelegate.swift */; };
 		2B1ADC7F24AA0EE500F31EDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1ADC7E24AA0EE500F31EDD /* SceneDelegate.swift */; };
 		2B1ADC8124AA0EE500F31EDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1ADC8024AA0EE500F31EDD /* ViewController.swift */; };
-		2B1ADC8424AA0EE500F31EDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B1ADC8224AA0EE500F31EDD /* Main.storyboard */; };
+		2B1ADC8424AA0EE500F31EDD /* old_Main2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B1ADC8224AA0EE500F31EDD /* old_Main2.storyboard */; };
 		2B1ADC8624AA0EEA00F31EDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B1ADC8524AA0EEA00F31EDD /* Assets.xcassets */; };
 		2B1ADC8924AA0EEA00F31EDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B1ADC8724AA0EEA00F31EDD /* LaunchScreen.storyboard */; };
+		2B1ADC9124AA0F3E00F31EDD /* Hydro.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B1ADC9024AA0F3E00F31EDD /* Hydro.scnassets */; };
+		2B24274F25497DA300829697 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B24274E25497DA300829697 /* HelpViewController.swift */; };
+		2B47C558256D83320042CA5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B47C557256D83320042CA5E /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +23,13 @@
 		2B1ADC7C24AA0EE500F31EDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B1ADC7E24AA0EE500F31EDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2B1ADC8024AA0EE500F31EDD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2B1ADC8324AA0EE500F31EDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2B1ADC8324AA0EE500F31EDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/old_Main2.storyboard; sourceTree = "<group>"; };
 		2B1ADC8524AA0EEA00F31EDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B1ADC8824AA0EEA00F31EDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B1ADC8A24AA0EEA00F31EDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B1ADC9024AA0F3E00F31EDD /* Hydro.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Hydro.scnassets; sourceTree = "<group>"; };
+		2B24274E25497DA300829697 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		2B47C557256D83320042CA5E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +64,24 @@
 			children = (
 				2B1ADC7C24AA0EE500F31EDD /* AppDelegate.swift */,
 				2B1ADC7E24AA0EE500F31EDD /* SceneDelegate.swift */,
-				2B1ADC8024AA0EE500F31EDD /* ViewController.swift */,
-				2B1ADC8224AA0EE500F31EDD /* Main.storyboard */,
+				2B24274D25497D7800829697 /* Controllers */,
+				2B1ADC8224AA0EE500F31EDD /* old_Main2.storyboard */,
+				2B47C557256D83320042CA5E /* Main.storyboard */,
 				2B1ADC8524AA0EEA00F31EDD /* Assets.xcassets */,
 				2B1ADC8724AA0EEA00F31EDD /* LaunchScreen.storyboard */,
 				2B1ADC8A24AA0EEA00F31EDD /* Info.plist */,
+				2B1ADC9024AA0F3E00F31EDD /* Hydro.scnassets */,
 			);
 			path = Hydro;
+			sourceTree = "<group>";
+		};
+		2B24274D25497D7800829697 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2B1ADC8024AA0EE500F31EDD /* ViewController.swift */,
+				2B24274E25497DA300829697 /* HelpViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -94,7 +111,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Michal Podroužek";
 				TargetAttributes = {
 					2B1ADC7824AA0EE500F31EDD = {
@@ -126,8 +143,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B1ADC8924AA0EEA00F31EDD /* LaunchScreen.storyboard in Resources */,
+				2B47C558256D83320042CA5E /* Main.storyboard in Resources */,
 				2B1ADC8624AA0EEA00F31EDD /* Assets.xcassets in Resources */,
-				2B1ADC8424AA0EE500F31EDD /* Main.storyboard in Resources */,
+				2B1ADC9124AA0F3E00F31EDD /* Hydro.scnassets in Resources */,
+				2B1ADC8424AA0EE500F31EDD /* old_Main2.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,18 +160,19 @@
 				2B1ADC8124AA0EE500F31EDD /* ViewController.swift in Sources */,
 				2B1ADC7D24AA0EE500F31EDD /* AppDelegate.swift in Sources */,
 				2B1ADC7F24AA0EE500F31EDD /* SceneDelegate.swift in Sources */,
+				2B24274F25497DA300829697 /* HelpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2B1ADC8224AA0EE500F31EDD /* Main.storyboard */ = {
+		2B1ADC8224AA0EE500F31EDD /* old_Main2.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2B1ADC8324AA0EE500F31EDD /* Base */,
 			);
-			name = Main.storyboard;
+			name = old_Main2.storyboard;
 			sourceTree = "<group>";
 		};
 		2B1ADC8724AA0EEA00F31EDD /* LaunchScreen.storyboard */ = {
@@ -192,6 +212,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -252,6 +273,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
